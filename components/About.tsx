@@ -2,16 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Twitter, Instagram, Linkedin, Github } from 'lucide-react';
 import ComingSoonPopup from './ComingSoonPopup';
 
-// Using raw GitHub URLs for profile images
+// Images are served directly from the public/profilepic directory.
+// Since we use HashRouter and base: './', relative paths work fine.
 const profileImages = [
-  "https://github.com/abhisahu47/SOLT.github.io/blob/main/public/profilepic/Profilepic1.png?raw=true",
-  "https://github.com/abhisahu47/SOLT.github.io/blob/main/public/profilepic/Profilepic2.png?raw=true",
-  "https://github.com/abhisahu47/SOLT.github.io/blob/main/public/profilepic/Profilepic3.png?raw=true",
-  "https://github.com/abhisahu47/SOLT.github.io/blob/main/public/profilepic/Profilepic4.png?raw=true",
-  "https://github.com/abhisahu47/SOLT.github.io/blob/main/public/profilepic/Profilepic5.png?raw=true",
-  "https://github.com/abhisahu47/SOLT.github.io/blob/main/public/profilepic/Profilepic6.png?raw=true",
-  "https://github.com/abhisahu47/SOLT.github.io/blob/main/public/profilepic/Profilepic7.png?raw=true",
-  "https://github.com/abhisahu47/SOLT.github.io/blob/main/public/profilepic/Profilepic8.png?raw=true",
+  'profilepic/Profilepic1.png',
+  'profilepic/Profilepic2.png',
+  'profilepic/Profilepic3.png',
+  'profilepic/Profilepic4.png',
+  'profilepic/Profilepic5.png',
+  'profilepic/Profilepic6.png',
+  'profilepic/Profilepic7.png',
+  'profilepic/Profilepic8.png',
 ];
 
 const About: React.FC = () => {
