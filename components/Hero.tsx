@@ -19,15 +19,13 @@ const Hero: React.FC = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <h2 className="text-forest-300 font-medium tracking-widest text-sm md:text-base mb-4 uppercase">
-          Explore the Micro, Understand the Macro
-        </h2>
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
-          Science of <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-forest-300 to-teal-200">
-            Living Things
-          </span>
+        <h1 className="text-7xl md:text-9xl font-black text-white tracking-tighter mb-4 drop-shadow-2xl">
+          SOLT
         </h1>
+        <h2 className="text-2xl md:text-3xl font-light text-forest-200 tracking-[0.2em] uppercase border-t border-white/20 pt-6 inline-block mb-10">
+          Science of Living Things
+        </h2>
+        
         <p className="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed">
           Exploring the intersection of biology, education, and scientific discovery.
         </p>
