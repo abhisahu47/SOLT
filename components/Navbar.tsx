@@ -33,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             <div className="p-2 bg-forest-100 rounded-full group-hover:bg-forest-200 transition-colors">
               <Microscope className="h-6 w-6 text-forest-700" />
             </div>
-            <span className="font-bold text-xl tracking-tight text-forest-900">SOLT5</span>
+            <span className="font-bold text-xl tracking-tight text-forest-900">SOLT</span>
           </div>
           
           <div className="hidden md:block">

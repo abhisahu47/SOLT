@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-2 mb-4 text-white">
               <Microscope className="h-6 w-6" />
-              <span className="font-bold text-xl tracking-tight">SOLT5</span>
+              <span className="font-bold text-xl tracking-tight">SOLT</span>
             </div>
             <p className="text-sm text-slate-400 max-w-sm">
               Science of Living Things is an educational initiative dedicated to making biology accessible, engaging, and beautiful.
@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
               <a href="#" className="hover:text-white transition-colors"><Linkedin className="h-5 w-5" /></a>
             </div>
             <p className="text-xs text-slate-500 mt-4">
-              © {new Date().getFullYear()} SOLT5. All rights reserved.
+              © {new Date().getFullYear()} SOLT. All rights reserved.
             </p>
           </div>
         </div>
