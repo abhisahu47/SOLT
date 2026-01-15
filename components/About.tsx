@@ -2,21 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Twitter, Instagram, Linkedin, Github } from 'lucide-react';
 import ComingSoonPopup from './ComingSoonPopup';
 
-// Placeholders for the attached images. 
-// Ideally, these would be local imports like: import img1 from '../assets/me1.jpg';
+// Using raw GitHub URLs for profile images
 const profileImages = [
-  "https://picsum.photos/seed/profile1/800/800",
-  "https://picsum.photos/seed/motorcycle/800/800",
-  "https://picsum.photos/seed/mountains/800/800",
-  "https://picsum.photos/seed/raincoat/800/800",
-  "https://picsum.photos/seed/travel/800/800",
-  "https://picsum.photos/seed/nature/800/800",
-  "https://picsum.photos/seed/bridge/800/800",
-  "https://picsum.photos/seed/stream/800/800",
-  "https://picsum.photos/seed/plane/800/800",
-  "https://picsum.photos/seed/profile2/800/800",
-  "https://picsum.photos/seed/profile3/800/800",
-  "https://picsum.photos/seed/profile4/800/800",
+  "https://github.com/abhisahu47/SOLT.github.io/blob/main/public/profilepic/Profilepic1.png?raw=true",
+  "https://github.com/abhisahu47/SOLT.github.io/blob/main/public/profilepic/Profilepic2.png?raw=true",
+  "https://github.com/abhisahu47/SOLT.github.io/blob/main/public/profilepic/Profilepic3.png?raw=true",
+  "https://github.com/abhisahu47/SOLT.github.io/blob/main/public/profilepic/Profilepic4.png?raw=true",
+  "https://github.com/abhisahu47/SOLT.github.io/blob/main/public/profilepic/Profilepic5.png?raw=true",
+  "https://github.com/abhisahu47/SOLT.github.io/blob/main/public/profilepic/Profilepic6.png?raw=true",
+  "https://github.com/abhisahu47/SOLT.github.io/blob/main/public/profilepic/Profilepic7.png?raw=true",
+  "https://github.com/abhisahu47/SOLT.github.io/blob/main/public/profilepic/Profilepic8.png?raw=true",
 ];
 
 const About: React.FC = () => {
