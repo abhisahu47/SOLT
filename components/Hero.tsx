@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
           alt="Microscopic leaf cell structure" 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-forest-900/80 to-slate-900/80"></div>
+        <div className="absolute inset-0 bg-black/60"></div>
       </div>
 
       {/* Content */}
