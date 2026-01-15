@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://drive.google.com/uc?export=view&id=1r3zqYg6aDupnrRQYTbl3DJSn09Mlv4oC" 
+          src="otherimages/landingimage1.png" 
           alt="Microscopic leaf cell structure" 
           className="w-full h-full object-cover"
         />
