@@ -94,13 +94,13 @@ const About: React.FC = () => {
             
             <div className="prose prose-slate text-slate-600 mb-10 mx-auto lg:mx-0 leading-relaxed">
               <p className="mb-4">
-                I’m not the fastest, smartest, or any kind of “-est.” I’m just a regular fella trying to be useful and make a positive impact, however small.
+                I’m rarely the fastest or the smartest person in the room—and I’m certainly not the “-est” of anything else. I’m just a guy with a healthy dose of curiosity, trying to be useful and leave things a little better than I found them.
               </p>
               <p className="mb-4">
-                My fascination with how life actually works led me into Life Science-looking at the macro through the lens of the micro (and the physics and chemistry behind it). Currently, I’m deep-diving into how AI is going to reshape molecular design and structural biology.
+                My fascination with the mechanics of life led me into Life Sciences, where I spent my time looking at the macro through the lens of the micro. These days, I’m deep-diving into the intersection of biology and silicon: specifically, how AI and Artificial Neural Networks are reshaping molecular design and structural biology.
               </p>
               <p>
-                P.S. By day, I work as a teacher (so I’m used to explaining things).
+                P.S. By day, I’m a teacher. I’m professionally trained to explain "the science stuff" without making your head spin.
               </p>
             </div>
 
