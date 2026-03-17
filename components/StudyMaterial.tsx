@@ -40,36 +40,14 @@ const class12Chapters = [
   "Biodiversity and its Conservation"
 ];
 
-// ==================================================================================
-// INSTRUCTIONS FOR ADDING CHAPTER PDFs / RESOURCES
-// ==================================================================================
-//
-// 1. To add a PDF or Resource Link for a specific chapter:
-//    - Locate the 'pdfMap' object below.
-//    - Add a new key-value pair where:
-//      KEY   = The exact chapter name from 'class11Chapters' or 'class12Chapters' lists above.
-//      VALUE = The URL to the file.
-//
-// 2. Using Google Drive Links:
-//    - Upload your PDF to Google Drive.
-//    - Right-click the file -> Share -> Copy Link (Ensure access is set to "Anyone with the link").
-//    - Paste that link as the value.
-//    - Example: "The Living World": "https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing"
-//
-// 3. Using Local Files:
-//    - Place the PDF file in the 'public/pdfs/' folder of your project.
-//    - Use the path relative to the public folder.
-//    - Example: "Biological Classification": "/pdfs/biological_classification.pdf"
-//
-// ==================================================================================
-
-const pdfMap: Record<string, string> = {
-  // Class 12 - Chapter 6
-  "Evolution": "https://drive.google.com/file/d/1A3C5-5DzO-WnDIbHvTIda6efbPcQ_91m/view?usp=drive_link",
-  
-  // Add more chapters here following the instructions above
-  // "Human Reproduction": "https://link-to-your-pdf.com/file.pdf",
-};
+const pdfFiles = import.meta.glob('/public/CBSE Study Material/**/*.pdf');
+const availableChapters = new Set(
+  Object.keys(pdfFiles).map(path => {
+    const parts = path.split('/');
+    const fileName = parts[parts.length - 1];
+    return fileName.replace('.pdf', '');
+  })
+);
 
 const StudyMaterial: React.FC = () => {
   const navigate = useNavigate();
@@ -78,13 +56,10 @@ const StudyMaterial: React.FC = () => {
   const currentChapters = grade === '11' ? class11Chapters : class12Chapters;
 
   const handleChapterClick = (chapterName: string) => {
-    const link = pdfMap[chapterName];
-    
-    if (link) {
-      // Open the mapped link (Google Drive or Local PDF) in a new tab
+    if (availableChapters.has(chapterName)) {
+      const link = `/CBSE Study Material/${grade}/${chapterName}.pdf`;
       window.open(link, '_blank');
     } else {
-      // Fallback for demo purposes if no file is mapped
       alert("Study material for this chapter is coming soon!");
     }
   };
@@ -146,9 +121,14 @@ const StudyMaterial: React.FC = () => {
                 Official CBSE curriculum compliant notes and study guides.
               </p>
               <div className="h-1 w-full bg-slate-100 rounded-full overflow-hidden">
-                <div className="h-full bg-forest-500 w-3/4"></div>
+                <div 
+                  className="h-full bg-forest-500 transition-all duration-500" 
+                  style={{ width: `${(currentChapters.filter(c => availableChapters.has(c)).length / currentChapters.length) * 100}%` }}
+                ></div>
               </div>
-              <p className="text-xs text-slate-400 mt-2">{currentChapters.length} Chapters Available</p>
+              <p className="text-xs text-slate-400 mt-2">
+                {currentChapters.filter(c => availableChapters.has(c)).length} of {currentChapters.length} Chapters Available
+              </p>
             </div>
           </div>
 
@@ -160,38 +140,38 @@ const StudyMaterial: React.FC = () => {
               </div>
               <div className="divide-y divide-slate-100">
                 {currentChapters.map((chapter, index) => {
-                  const hasCustomLink = !!pdfMap[chapter];
+                  const isAvailable = availableChapters.has(chapter);
                   return (
                     <div 
                       key={index} 
                       onClick={() => handleChapterClick(chapter)}
-                      className="p-6 hover:bg-forest-50 transition-colors cursor-pointer flex items-center justify-between group"
+                      className={`p-6 transition-colors flex items-center justify-between group ${
+                        isAvailable ? 'hover:bg-forest-50 cursor-pointer' : 'opacity-70 cursor-not-allowed'
+                      }`}
                     >
                       <div className="flex items-center gap-4">
                         <div className={`w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm transition-colors ${
-                          hasCustomLink 
+                          isAvailable 
                             ? 'bg-forest-100 text-forest-700 group-hover:bg-forest-200' 
-                            : 'bg-slate-100 text-slate-500 group-hover:bg-forest-200 group-hover:text-forest-800'
+                            : 'bg-slate-100 text-slate-500'
                         }`}>
                           {index + 1}
                         </div>
                         <div>
-                          <h4 className="font-semibold text-slate-800 group-hover:text-forest-700 transition-colors">
+                          <h4 className={`font-semibold transition-colors ${
+                            isAvailable ? 'text-slate-800 group-hover:text-forest-700' : 'text-slate-600'
+                          }`}>
                             {chapter}
                           </h4>
                           <p className="text-xs text-slate-400">
-                            {hasCustomLink ? 'Available Now' : 'Resource Pending'}
+                            {isAvailable ? 'Available Now' : 'Coming soon'}
                           </p>
                         </div>
                       </div>
                       <button className={`p-2 transition-colors ${
-                        hasCustomLink ? 'text-forest-600' : 'text-slate-300 group-hover:text-forest-600'
+                        isAvailable ? 'text-forest-600' : 'text-slate-300'
                       }`}>
-                        {hasCustomLink ? (
-                           <ExternalLink className="h-5 w-5" />
-                        ) : (
-                           <Download className="h-5 w-5" />
-                        )}
+                        <Download className="h-5 w-5" />
                       </button>
                     </div>
                   );
