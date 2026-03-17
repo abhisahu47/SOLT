@@ -1,4 +1,4 @@
-# SOLT - Science of Life and Transformation
+# SOLT - Science of Living Things
 
 ## About This Project
 
