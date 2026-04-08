@@ -57,7 +57,7 @@ const StudyMaterial: React.FC = () => {
 
   const handleChapterClick = (chapterName: string) => {
     if (availableChapters.has(chapterName)) {
-      const link = `/CBSE Study Material/${grade}/${chapterName}.pdf`;
+      const link = `/CBSE%20Study%20Material/${grade}/${encodeURIComponent(chapterName)}.pdf`;
       window.open(link, '_blank');
     } else {
       alert("Study material for this chapter is coming soon!");
