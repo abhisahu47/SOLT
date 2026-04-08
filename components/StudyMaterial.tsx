@@ -40,14 +40,17 @@ const class12Chapters = [
   "Biodiversity and its Conservation"
 ];
 
-const pdfFiles = import.meta.glob('/public/CBSE Study Material/**/*.pdf');
-const availableChapters = new Set(
-  Object.keys(pdfFiles).map(path => {
-    const parts = path.split('/');
-    const fileName = parts[parts.length - 1];
-    return fileName.replace('.pdf', '');
-  })
-);
+const pdfFiles = import.meta.glob('/public/CBSE Study Material/**/*.pdf', { eager: true });
+
+const pdfMap = new Map<string, string>();
+Object.entries(pdfFiles).forEach(([path, module]: [string, any]) => {
+  const parts = path.split('/');
+  const fileName = parts[parts.length - 1];
+  const chapterName = fileName.replace('.pdf', '');
+  pdfMap.set(chapterName, module.default);
+});
+
+const availableChapters = new Set(pdfMap.keys());
 
 const StudyMaterial: React.FC = () => {
   const navigate = useNavigate();
@@ -56,9 +59,9 @@ const StudyMaterial: React.FC = () => {
   const currentChapters = grade === '11' ? class11Chapters : class12Chapters;
 
   const handleChapterClick = (chapterName: string) => {
-    if (availableChapters.has(chapterName)) {
-      const link = `/CBSE%20Study%20Material/${grade}/${encodeURIComponent(chapterName)}.pdf`;
-      window.open(link, '_blank');
+    if (pdfMap.has(chapterName)) {
+      const pdfUrl = pdfMap.get(chapterName);
+      window.open(pdfUrl, '_blank');
     } else {
       alert("Study material for this chapter is coming soon!");
     }
